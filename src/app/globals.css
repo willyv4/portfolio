@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  */
+/*  */
+/*  */
+/*  */
+
+@keyframes neonFlicker {
+  0%,
+  2%,
+  4%,
+  6%,
+  8% {
+    opacity: 0.6;
+  }
+
+  1%,
+  3%,
+  5%,
+  7%,
+  9% {
+    opacity: 1;
+  }
+}
+
+/* Apply the neon blinking animation to the neon-flicker class */
+.neon-flicker {
+  animation: none; /* Remove any existing animation */
+  opacity: 1; /* Ensure full opacity by default */
+  transition: opacity 2s ease-in-out; /* Add a transition for smoother opacity change */
+}
+
+/* Apply the neon blinking animation to the neon-flicker class on hover */
+.neon-flicker:hover {
+  animation: neonFlicker 2s ease-in-out forwards; /* Start the blink animation on hover */
+  text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
+}
+
+.neon-flicker-rand {
+  animation: neonFlicker 2s ease-in-out forwards; /* Start the blink animation on hover */
+  text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  z-index: -1;
+}
+
+/* Apply the orb effect on hover */
+.hover-orb:hover + .orb {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(2);
+}
