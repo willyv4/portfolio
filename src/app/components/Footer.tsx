@@ -69,27 +69,20 @@ const navigation = [
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-dominant-950 h-fit fixed bottom-0 ">
-      <div className="mx-auto max-w-7xl px-4 py-4 md:flex md:items-center md:justify-between lg:px-8">
-        <div className="flex justify-center space-x-6 md:order-2">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="text-gray-400 hover:text-gray-500"
-            >
-              <span className="sr-only">{item.name}</span>
-              <item.icon className="size-5" aria-hidden="true" />
-            </Link>
-          ))}
+    <footer className="bg-dominant-950 ml-7 px-3 py-2 h-fit fixed bottom-5 left-5 w-fit border border-dominant-700 rounded-full">
+      <div className="flex justify-center space-x-6 md:order-2">
+        {navigation.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className="text-gray-400 hover:text-gray-500"
+          >
+            <span className="sr-only">{item.name}</span>
+            <item.icon className="size-5" aria-hidden="true" />
+          </Link>
+        ))}
 
-          <ChatBubbleBottomCenterTextIcon className="size-5 fill-secondary-200" />
-        </div>
-        <div className="mt-8 md:order-2 md:mt-0">
-          <p className="text-center text-xs leading-5 text-gray-500">
-            &copy; 2024 William Valadez, All rights reserved.
-          </p>
-        </div>
+        <ChatBubbleBottomCenterTextIcon className="size-5 fill-secondary-200" />
       </div>
     </footer>
   );

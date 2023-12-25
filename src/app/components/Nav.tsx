@@ -1,5 +1,5 @@
 "use client";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../../utils/funcs";
@@ -7,17 +7,26 @@ import Link from "next/link";
 import { PersonalLogo } from "../assets/logo";
 
 const navigation = [
-  { name: "Portfolio", href: "portfolio", current: true },
-  { name: "Blog", href: "blog", current: false },
-  { name: "About", href: "about", current: false },
+  { name: "Portfolio", href: "portfolio" },
+  { name: "Blog", href: "blog" },
+  { name: "About", href: "about" },
 ];
 
 export default function Navbar() {
+  const [current, setCurrent] = useState("");
+
   return (
     <Disclosure as="nav">
       {({ open }) => (
         <>
-          <div className="lg:fixed top-0 z-50 w-full px-2 sm:px-6 lg:px-8">
+          <div
+            className={classNames(
+              "lg:fixed top-0 z-50 w-full px-2 sm:px-6 lg:px-8",
+              "Portfolio" === current
+                ? "lg:bg-dominant-950 border-b border-dominant-800"
+                : ""
+            )}
+          >
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
@@ -31,7 +40,7 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <Link href="/">
+              <Link href="/" onClick={() => setCurrent("")}>
                 <PersonalLogo
                   className="size-32 h-fit gap-x-4"
                   aria-hidden="true"
@@ -43,15 +52,18 @@ export default function Navbar() {
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <Link
+                        onClick={() => setCurrent(item.name)}
                         key={item.name}
                         href={item.href}
                         className={classNames(
-                          item.current
-                            ? " text-white"
+                          item.name === current
+                            ? " text-primary-300"
                             : "text-dominant-300 hover:bg-dominant-700 hover:text-white",
                           "rounded-md px-3 py-2 text-sm font-medium bg-dominant-950"
                         )}
-                        aria-current={item.current ? "page" : undefined}
+                        aria-current={
+                          current === item.name ? "page" : undefined
+                        }
                       >
                         {item.name}
                       </Link>
@@ -71,12 +83,12 @@ export default function Navbar() {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current
+                    item.name === current
                       ? "bg-dominant-900 text-white"
                       : "text-dominant-300 hover:bg-dominant-700 hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
-                  aria-current={item.current ? "page" : undefined}
+                  aria-current={item.name === current ? "page" : undefined}
                 >
                   {item.name}
                 </Disclosure.Button>

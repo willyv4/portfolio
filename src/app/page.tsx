@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { classNames } from "../../utils/funcs";
 import Image from "./assets/mypic.png";
 import NextImage from "next/image";
-import Footer from "./components/Footer";
 
 export default function Home() {
   const [randomNum, setRandomNum] = useState(0);
@@ -12,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setRandomNum(Math.floor(Math.random() * letterArray.length));
-    }, 2300);
+    }, 1800);
 
     return () => clearInterval(intervalId);
   }, [letterArray.length]);
@@ -85,7 +84,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-      
           </div>
         </div>
       </div>
