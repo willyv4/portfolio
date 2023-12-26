@@ -1,7 +1,7 @@
 "use client";
 import { Fragment, useState } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../../utils/funcs";
 import Link from "next/link";
 import { PersonalLogo } from "../assets/logo";
@@ -21,10 +21,7 @@ export default function Navbar() {
         <>
           <div
             className={classNames(
-              "lg:fixed top-0 z-50 w-full px-2 sm:px-6 lg:px-8",
-              "Portfolio" === current
-                ? "lg:bg-dominant-950 border-b border-dominant-800"
-                : ""
+              "lg:fixed top-0 z-50 w-full px-2 sm:px-6 lg:px-8 lg:bg-dominant-950 border-b border-dominant-800"
             )}
           >
             <div className="relative flex h-16 items-center justify-between">
@@ -40,7 +37,7 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <Link href="/" onClick={() => setCurrent("")}>
+              <Link href="/" onClick={() => setCurrent("/")}>
                 <PersonalLogo
                   className="size-32 h-fit gap-x-4"
                   aria-hidden="true"

@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*  */
-/*  */
-/*  */
-/*  */
-
 @keyframes neonFlicker {
   0%,
   2%,
@@ -25,21 +20,19 @@
   }
 }
 
-/* Apply the neon blinking animation to the neon-flicker class */
 .neon-flicker {
-  animation: none; /* Remove any existing animation */
-  opacity: 1; /* Ensure full opacity by default */
-  transition: opacity 2s ease-in-out; /* Add a transition for smoother opacity change */
+  animation: none;
+  opacity: 1;
+  transition: opacity 2s ease-in-out;
 }
 
-/* Apply the neon blinking animation to the neon-flicker class on hover */
 .neon-flicker:hover {
-  animation: neonFlicker 2s ease-in-out forwards; /* Start the blink animation on hover */
+  animation: neonFlicker 2s ease-in-out forwards;
   text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
 }
 
 .neon-flicker-rand {
-  animation: neonFlicker 2s ease-in-out forwards; /* Start the blink animation on hover */
+  animation: neonFlicker 2s ease-in-out forwards;
   text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
 }
 
@@ -56,8 +49,24 @@
   z-index: -1;
 }
 
-/* Apply the orb effect on hover */
 .hover-orb:hover + .orb {
   opacity: 1;
   transform: translate(-50%, -50%) scale(2);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, #fda4ae8b, #a5f3fc7f);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #09090b;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #27272a;
 }
