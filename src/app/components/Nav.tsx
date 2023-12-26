@@ -21,15 +21,13 @@ export default function Navbar() {
         <>
           <div
             className={classNames(
-              "lg:fixed top-0 z-50 w-full px-2 sm:px-6 lg:px-8 lg:bg-dominant-950 border-b border-dominant-800"
+              "lg:fixed top-0 z-50 overflow-hidden w-full px-2 sm:px-6 lg:px-8 lg:bg-dominant-950 border-b border-dominant-800"
             )}
           >
             <div className="relative flex h-16 items-center justify-between">
               <div className="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
                 <Disclosure.Button className="relative inline-flex items-center justify-center rounded-md p-2 text-dominant-400 hover:bg-dominant-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
-                  <span className="absolute -inset-0.5" />
-                  <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
@@ -68,7 +66,6 @@ export default function Navbar() {
                   </div>
                 </div>
               </div>
-              <MenuDropDown />
             </div>
           </div>
 
@@ -97,69 +94,3 @@ export default function Navbar() {
     </Disclosure>
   );
 }
-
-const MenuDropDown = () => {
-  return (
-    <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <Menu as="div" className="relative ml-3">
-        <div>
-          <Menu.Button className="relative flex rounded-full bg-dominant-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-dominant-800">
-            <span className="absolute -inset-1.5" />
-            <span className="sr-only">Open user menu</span>
-          </Menu.Button>
-        </div>
-        <Transition
-          as={Fragment}
-          enter="transition ease-out duration-100"
-          enterFrom="transform opacity-0 scale-95"
-          enterTo="transform opacity-100 scale-100"
-          leave="transition ease-in duration-75"
-          leaveFrom="transform opacity-100 scale-100"
-          leaveTo="transform opacity-0 scale-95"
-        >
-          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-dominant-100" : "",
-                    "block px-4 py-2 text-sm text-dominant-700"
-                  )}
-                >
-                  Your Profile
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-dominant-100" : "",
-                    "block px-4 py-2 text-sm text-dominant-700"
-                  )}
-                >
-                  Settings
-                </a>
-              )}
-            </Menu.Item>
-            <Menu.Item>
-              {({ active }) => (
-                <a
-                  href="#"
-                  className={classNames(
-                    active ? "bg-dominant-100" : "",
-                    "block px-4 py-2 text-sm text-dominant-700"
-                  )}
-                >
-                  Sign out
-                </a>
-              )}
-            </Menu.Item>
-          </Menu.Items>
-        </Transition>
-      </Menu>
-    </div>
-  );
-};
