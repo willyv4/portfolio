@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Navbar from "./components/Nav";
 import "./globals.css";
 import Footer from "./components/Footer";
+import { Notification } from "./components/ContactForm";
+import { NotificationProvider } from "./context";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,9 +22,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="bg-dominant-950">
       <body className={`${inter.className} bg-dominant-950`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <NotificationProvider>
+          <Navbar />
+          {children}
+          <Footer />
+          <Notification />
+        </NotificationProvider>
       </body>
     </html>
   );

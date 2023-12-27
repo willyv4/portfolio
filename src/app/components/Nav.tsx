@@ -8,8 +8,8 @@ import { PersonalLogo } from "../assets/logo";
 
 const navigation = [
   { name: "Portfolio", href: "portfolio" },
-  { name: "Blog", href: "blog" },
-  { name: "About", href: "about" },
+  // { name: "Blog", href: "blog" },
+  // { name: "About", href: "about" },
 ];
 
 export default function Navbar() {

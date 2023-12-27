@@ -82,7 +82,7 @@ export default function Page() {
   return pieces.map((obj, i) => (
     <section
       key={obj.title + i}
-      className="flex w-full mx-auto max-w-7xl justify-center -my-6 sm:my-24 lg:mt-28 px-6 sm:px-10"
+      className="flex items-center w-full mx-auto max-w-7xl justify-center -mt-12 mb-16 sm:my-24 lg:mt-28 px-6 sm:px-10"
     >
       <div
         ref={(el) => (elementsRef.current[i] = el)}

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { classNames } from "../../utils/funcs";
 import Image from "./assets/mypic.png";
 import NextImage from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   const [randomNum, setRandomNum] = useState(0);
@@ -70,18 +71,15 @@ export default function Home() {
                 Enthusiast | Python | Flask
               </p>
               <div className="mt-10 flex items-center gap-x-6 hover-orb">
-                <a
-                  href="#"
+                <Link
+                  href="/portfolio"
                   className="rounded-md bg-secondary-200 px-3.5 py-2.5 text-sm font-semibold text-dominant-950 shadow-sm hover:bg-secondary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Portfolio
-                </a>
-                <a
-                  href="#"
-                  className="text-sm font-semibold leading-6 text-secondary-200"
-                >
-                  Blog <span aria-hidden="true">→</span>
-                </a>
+                </Link>
+                <div className="rounded-md px-3.5 py-2.5 text-xs font-semibold text-dominant-50">
+                  blog & about coming soon
+                </div>
               </div>
             </div>
           </div>

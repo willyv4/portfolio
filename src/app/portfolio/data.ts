@@ -18,10 +18,13 @@ export const pieces = [
     siteLink: "https://soundsculpt.app/",
     codeLink: "",
     content:
-      "- Created SoundSculpt's admin platform from start to finish: database design, TypeScript backend, React/Tailwind CSS frontend. \n" +
-      "- Implemented Admin, Blog, Chat, and AI features improving blog search and ChatGPT Assistant API integration. \n" +
-      "- Created majority of UI elements/animations for home, blog, and songs pages as per designer specs using TypeScript, React, and Tailwind CSS. \n" +
-      "- Contributed in cross-functional collaboration to optimize site usability through user behavior analysis with LogRocket, fostering innovative feature ideation and design sessions while aligning weekly software development tasks with overarching growth strategies.",
+      "- Architected, designed, and developed SoundSculpt's Content Management System (CMS) from start to finish, evaluating build vs. buy. Including: database schemas, database queries, RESTful API, and Frontend UI/UX. \n" +
+      "- Developed and Designed SoundSculpt's AI-powered chat experience, organizing context, configuring functions, and integrating with core application logic. \n" +
+      "- Implemented SoundSculpt's frontend UI for homepage, songs list page, according to designer specifications. Implemented all frontend aspects for SoundSculpt's blog page, including UI/UX design and frontend development. \n" +
+      "- Analyzed data (LogRocket) to optimize site usability, driving iterative improvements aligned with identified growth strategies and enhancing user experiences. \n" +
+      "- Collaborated across teams, proposing innovative features and actively participating in design systems and dynamic brainstorming sessions to drive product growth and enhance user experiences. \n" +
+      "- Organized and outlined weekly action items, aligning software development tasks with identified growth strategies, ensuring a cohesive approach toward strategic objectives.",
+
     techStack: "",
     devImg:
       "https://media.licdn.com/dms/image/C5603AQFyFzVzmfXUfw/profile-displayphoto-shrink_800_800/0/1645673504174?e=2147483647&v=beta&t=E92MO2AnX_HCJsfJPX7UP4Qmup_1mPDWTsd6l2iLsaM",
