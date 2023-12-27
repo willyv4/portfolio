@@ -156,8 +156,6 @@ interface TypingProps {
 const TypingEffect: FC<TypingProps> = ({ text, typedText, setTypedText }) => {
   const typingRef = useRef<HTMLSpanElement>(null);
 
-  console.log(typedText);
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries, obs) => {
@@ -233,8 +231,12 @@ const BrowserMockup: FC<MockUpProps> = ({ title, siteLink, img }) => {
           </svg>
         </div>
         <div className="text-sm text-white flex flex-row bg-dominant-500 px-2 rounded-t-xl pb-4 -mt-2 pt-1">
-          <EarthIcon className="size-3 mt-1 fill-white ml-0.5 mr-2" />
-          {title}
+          {siteLink.length === typedText.length ? (
+            <EarthIcon className="size-3 mt-1 fill-white ml-0.5 mr-2" />
+          ) : (
+            <ArrowPathIcon className="animate-spin size-3 mt-1 stroke-blue-300 ml-0.5 mr-2" />
+          )}
+          {siteLink.length === typedText.length ? title : "Google"}
           <XMarkIcon
             className="size-3 mt-1 fill-white ml-8 sm:ml-16"
             strokeWidth={3}
@@ -267,7 +269,7 @@ const BrowserMockup: FC<MockUpProps> = ({ title, siteLink, img }) => {
       <div className="flex justify-center border-t border-dominant-500">
         <NextImage
           className="object-fit rounded-b-lg h-3/4"
-          alt="city night sky"
+          alt="image of a website"
           src={image}
           priority
         />
