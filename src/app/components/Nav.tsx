@@ -5,6 +5,8 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../../utils/funcs";
 import Link from "next/link";
 import { PersonalLogo } from "../assets/logo";
+import meImage from "../assets/meImage.png";
+import NextImage from "next/image";
 
 const navigation = [
   { name: "Portfolio", href: "portfolio" },
@@ -35,7 +37,16 @@ export default function Navbar() {
                   )}
                 </Disclosure.Button>
               </div>
-              <Link href="/" onClick={() => setCurrent("/")}>
+              <Link
+                className="flex flex-row items-center"
+                href="/"
+                onClick={() => setCurrent("/")}
+              >
+                <NextImage
+                  src={meImage}
+                  alt="Portrait Image of William Valadez"
+                  className="size-10 rounded-full object-cover bg-dominant-50 filter grayscale flex-shrink-0"
+                />
                 <PersonalLogo
                   className="size-32 h-fit gap-x-4"
                   aria-hidden="true"

@@ -4,6 +4,7 @@ import { classNames } from "../../utils/funcs";
 import Image from "./assets/mypic.png";
 import NextImage from "next/image";
 import Link from "next/link";
+import meImage from "./assets/meImage.png";
 
 export default function Home() {
   const [randomNum, setRandomNum] = useState(0);
@@ -65,11 +66,13 @@ export default function Home() {
                   </span>
                 ))}
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-300">
+
+              <p className="text-lg mt-6 leading-8 text-gray-300">
                 Software Developer @ SoundSculpt | Fullstack: TypeScript, React,
                 NodeJS, ExpressJS, NextJS, RemixJS | API Integrations | UI/UX
                 Enthusiast | Python | Flask
               </p>
+
               <div className="mt-10 flex items-center gap-x-6 hover-orb">
                 <Link
                   href="/portfolio"

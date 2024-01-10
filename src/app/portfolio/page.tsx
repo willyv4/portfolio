@@ -7,6 +7,7 @@ import {
   EllipsisHorizontalIcon,
   XMarkIcon,
   CodeBracketIcon,
+  ComputerDesktopIcon,
 } from "@heroicons/react/24/outline";
 import { EarthIcon } from "../assets/logo";
 import { classNames } from "../../../utils/funcs";
@@ -23,6 +24,8 @@ import {
   useState,
 } from "react";
 import googleScreenShot from "../assets/google-screenshot.png";
+import meImage from "../assets/meImage.png";
+import Link from "next/link";
 
 export default function Page() {
   const convertMarkdown = async (content: string) => {
@@ -102,17 +105,25 @@ export default function Page() {
                 </a>
               </h3>
               {obj.codeLink && (
-                <div className="relative mr-20 mb-3">
-                  <a
-                    target="_blank"
-                    href={obj.codeLink}
-                    className="gap-x-2 text-xs bg-gradient-to-r from-primary-300 via-zinc-100 to-secondary-200 opacity-80 p-[1px] w-fit rounded-full absolute z-20 hover:opacity-100"
-                  >
-                    <div className="relative z-10 flex flex-row  items-center gap-x-2 rounded-full bg-dominant-950 px-3 py-1 text-dominant-50">
+                <div className="relative mr-36 mb-3">
+                  <div className="flex flex-row divide-x text-xs bg-gradient-to-r from-primary-300 via-zinc-100 to-secondary-200 opacity-80 p-[1px] w-fit rounded-full absolute z-20">
+                    <Link
+                      href={obj.siteLink}
+                      target="_blank"
+                      className="relative z-10 flex flex-row  items-center gap-x-2 rounded-l-full bg-dominant-950 px-3 py-1 text-dominant-50 hover:bg-dominant-800"
+                    >
+                      <p className="text-white">Site</p>
+                      <ComputerDesktopIcon className="size-3" />
+                    </Link>
+                    <Link
+                      href={obj.codeLink}
+                      target="_blank"
+                      className="relative z-10 flex flex-row  items-center gap-x-2 rounded-r-full bg-dominant-950 px-3 py-1 text-dominant-50 hover:bg-dominant-800"
+                    >
                       <p className="text-white">CODE</p>
                       <CodeBracketIcon className="size-3" />
-                    </div>
-                  </a>
+                    </Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -122,11 +133,10 @@ export default function Page() {
 
             {convertMarkdown(obj.content)}
             <div className="relative mt-8 flex items-center gap-x-4">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={obj.devImg}
+              <NextImage
+                src={meImage}
                 alt="Portrait Image of William Valadez"
-                className="h-10 w-10 rounded-full bg-dominant-50"
+                className="h-10 w-10 object-fit rounded-full bg-dominant-50"
               />
               <div className="text-sm leading-6">
                 <p className="font-semibold text-secondary-200">
