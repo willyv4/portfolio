@@ -33,7 +33,7 @@ export default function Home() {
 
           <div className="relative px-6 py-32 lg:px-8 lg:py-56 lg:pr-0">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-              <div className="hidden sm:mb-16 sm:flex">
+              {/* <div className="hidden sm:mb-16 sm:flex">
                 <div className="bg-gradient-to-r from-primary-300 via-zinc-100 to-secondary-200 opacity-80 p-[1px] w-fit rounded-full absolute z-20 hover:opacity-100">
                   <div className="bg-dominant-950 rounded-full px-3 py-1 text-sm leading-6 text-gray-300">
                     Get to know me more checkout my about me section.{" "}
@@ -46,7 +46,7 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-              </div>
+              </div> */}
 
               <h1 className="text-4xl font-bold tracking-tight  text-primary-300/60 sm:text-6xl">
                 {letterArray.map((char, i) => (
