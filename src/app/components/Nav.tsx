@@ -1,6 +1,6 @@
 "use client";
-import { Fragment, useState } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { useState } from "react";
+import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { classNames } from "../../../utils/funcs";
 import Link from "next/link";
@@ -23,7 +23,7 @@ export default function Navbar() {
         <>
           <div
             className={classNames(
-              "lg:fixed top-0 z-50 overflow-hidden w-full px-2 sm:px-6 lg:px-8 lg:bg-dominant-950 border-b border-dominant-800"
+              "fixed top-0 z-50 overflow-hidden w-full px-2 sm:px-6 lg:px-8 bg-dominant-950 border-b-[0.25px] border-white"
             )}
           >
             <div className="relative flex h-16 items-center justify-between">
@@ -38,14 +38,14 @@ export default function Navbar() {
                 </Disclosure.Button>
               </div>
               <Link
-                className="flex flex-row items-center"
+                className=" flex flex-row items-center"
                 href="/"
                 onClick={() => setCurrent("/")}
               >
                 <NextImage
                   src={meImage}
                   alt="Portrait Image of William Valadez"
-                  className="size-10 rounded-full object-cover bg-dominant-50 filter grayscale flex-shrink-0"
+                  className="w-16 object-cover bg-dominant-50 filter grayscale flex-shrink-0"
                 />
                 <PersonalLogo
                   className="size-32 h-fit gap-x-4"
@@ -80,8 +80,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 px-2 pb-3 pt-2">
+          <Disclosure.Panel className="sm:hidden mt-0.5 fixed top-[75px] bg-dominant-950 right-2 z-50 ring-1 ring-white rounded-lg">
+            <div className="space-y-1 px-2 pb-3 pt-2 mr-24">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}

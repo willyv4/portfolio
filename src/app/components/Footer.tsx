@@ -21,22 +21,22 @@ const navigation = [
 export default function Footer() {
   const [open, setOpen] = useState(false);
   return (
-    <footer className="fixed z-50 bottom-0 w-full flex justify-center">
-      <div className="relative w-fit bg-gradient-to-bl px-2 py-1 from-primary-300 via-dominant-50 to-secondary-200 rounded-t">
-        <div className="space-x-3 divide-x-2 px-2 divide-dominant-950 flex flex-row items-center justify-center">
+    <footer className="fixed z-50 bottom-0 w-full flex justify-center ">
+      <div className="relative w-fit bg-gradient-to-bl px-2 py-1 rounded-t-lg ring-1 ring-white bg-dominant-950">
+        <div className="space-x-3 divide-x-2 px-2 divide-white flex flex-row items-center justify-center">
           <button
             onClick={() => setOpen(true)}
             className="items-center space-x-1 rounded-l-full flex flex-row "
           >
-            <p className="font-black">Contact</p>
-            <EnvelopeIcon className="fill-dominant rounded-b-full size-5" />
+            <p className="font-bold tracking-tight text-white">Contact</p>
+            <EnvelopeIcon className="fill-white rounded-b-full size-5" />
           </button>
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
               target="_blank"
-              className="text-dominant-950 hover:text-gray-900 pl-2"
+              className="text-white hover:text-gray-900 pl-2"
             >
               <item.icon className="size-5" aria-hidden="true" />
             </Link>

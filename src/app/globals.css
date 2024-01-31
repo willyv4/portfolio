@@ -28,12 +28,12 @@
 
 .neon-flicker:hover {
   animation: neonFlicker 2s ease-in-out forwards;
-  text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
+  text-shadow: 0 0 2px #bef264, 0 0 10px #bef264;
 }
 
 .neon-flicker-rand {
   animation: neonFlicker 2s ease-in-out forwards;
-  text-shadow: 0 0 2px #fecdd3, 0 0 10px #fecdd3;
+  text-shadow: 0 0 2px #bef264, 0 0 10px #bef264;
 }
 
 .orb {
@@ -60,13 +60,18 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: linear-gradient(to bottom, #fda4ae8b, #a5f3fc7f);
+  background-color: #27272a;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #09090b;
+  border-radius: 5px;
+  background-color: #a3e635;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #27272a;
+  background-color: #a2e635b6;
+}
+
+.custom-clip {
+  clip-path: polygon(20% 0, 100% 0, 100% 100%, 0% 100%);
 }

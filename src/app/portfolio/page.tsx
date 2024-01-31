@@ -82,79 +82,84 @@ export default function Page() {
     };
   }, []);
 
-  return pieces.map((obj, i) => (
-    <section
-      key={obj.title + i}
-      className="flex items-center w-full mx-auto max-w-7xl justify-center -mt-12 mb-16 sm:my-24 lg:mt-28 px-6 sm:px-10"
-    >
-      <div
-        ref={(el) => (elementsRef.current[i] = el)}
-        className={classNames(
-          `flex justify-between w-full mt-28 opacity-0`,
-          i % 2 === 0
-            ? "flex-col-reverse lg:flex-row"
-            : "flex-col-reverse lg:flex-row-reverse"
-        )}
-      >
-        <div className="w-full mx-0 md:mx-4 mt-8 lg:mt-0">
-          <article className="h-full justify-center flex flex-col mx-auto max-w-xl">
-            <div className="flex flex-wrap justify-between">
-              <h3 className="text-3xl font-bold leading-6 neon-flicker text-primary-300 mb-3">
-                <a target="_blank" href={obj.siteLink}>
-                  {obj.title}
-                </a>
-              </h3>
-              {obj.codeLink && (
-                <div className="relative mr-36 mb-3">
-                  <div className="flex flex-row divide-x text-xs bg-gradient-to-r from-primary-300 via-zinc-100 to-secondary-200 opacity-80 p-[1px] w-fit rounded-full absolute z-20">
-                    <Link
-                      href={obj.siteLink}
-                      target="_blank"
-                      className="relative z-10 flex flex-row  items-center gap-x-2 rounded-l-full bg-dominant-950 px-3 py-1 text-dominant-50 hover:bg-dominant-800"
-                    >
-                      <p className="text-white">Site</p>
-                      <ComputerDesktopIcon className="size-3" />
+  return (
+    <div className="py-10">
+      {" "}
+      {pieces.map((obj, i) => (
+        <section
+          key={obj.title + i}
+          className="flex items-center w-full mx-auto max-w-7xl justify-center -mt-12 mb-16 sm:my-24 lg:mt-28 px-6 sm:px-10"
+        >
+          <div
+            ref={(el) => (elementsRef.current[i] = el)}
+            className={classNames(
+              `flex justify-between w-full mt-28 opacity-0`,
+              i % 2 === 0
+                ? "flex-col-reverse lg:flex-row"
+                : "flex-col-reverse lg:flex-row-reverse"
+            )}
+          >
+            <div className="w-full mx-0 md:mx-4 mt-8 lg:mt-0">
+              <article className="h-full justify-center flex flex-col mx-auto max-w-xl">
+                <div className="flex flex-wrap items-center space-x-3 divide-x-2 mb-3">
+                  <h3 className="text-3xl font-bold leading-6 text-white">
+                    <Link target="_blank" href={obj.siteLink}>
+                      {obj.title}
                     </Link>
-                    <Link
-                      href={obj.codeLink}
-                      target="_blank"
-                      className="relative z-10 flex flex-row  items-center gap-x-2 rounded-r-full bg-dominant-950 px-3 py-1 text-dominant-50 hover:bg-dominant-800"
-                    >
-                      <p className="text-white">CODE</p>
-                      <CodeBracketIcon className="size-3" />
-                    </Link>
+                  </h3>
+                  {obj.siteLink && (
+                    <h3 className="text-3xl font-bold leading-6 neon-flicker pl-3 text-primary-300">
+                      <Link
+                        href={obj.siteLink}
+                        target="_blank"
+                        className="relative z-10 flex flex-row items-center"
+                      >
+                        Site
+                      </Link>
+                    </h3>
+                  )}
+                  {obj.codeLink && (
+                    <h3 className="text-3xl font-bold leading-6 neon-flicker text-primary-300 pl-3">
+                      <Link
+                        href={obj.codeLink}
+                        target="_blank"
+                        className="relative z-10 flex flex-row items-center"
+                      >
+                        Code
+                      </Link>
+                    </h3>
+                  )}
+                </div>
+                <div className="prose mt-5 line-clamp-3 text-md font-semibold leading-6 text-dominant-100">
+                  {obj.shortDescription}
+                </div>
+
+                {convertMarkdown(obj.content)}
+                <div className="relative mt-8 flex items-center gap-x-4 transition ease-in-out duration-500">
+                  <NextImage
+                    src={meImage}
+                    alt="Portrait Image of William Valadez"
+                    className="h-10 w-10 object-fit rounded-full bg-dominant-50"
+                  />
+                  <div className="text-sm leading-6">
+                    <p className="font-semibold text-secondary-200">
+                      <a href="">{obj.developer}</a>
+                    </p>
+                    <p className="text-dominant-300">{obj.role}</p>
                   </div>
                 </div>
-              )}
+              </article>
             </div>
-            <div className="prose mt-5 line-clamp-3 text-md font-semibold leading-6 text-dominant-100">
-              {obj.shortDescription}
-            </div>
-
-            {convertMarkdown(obj.content)}
-            <div className="relative mt-8 flex items-center gap-x-4">
-              <NextImage
-                src={meImage}
-                alt="Portrait Image of William Valadez"
-                className="h-10 w-10 object-fit rounded-full bg-dominant-50"
-              />
-              <div className="text-sm leading-6">
-                <p className="font-semibold text-secondary-200">
-                  <a href="">{obj.developer}</a>
-                </p>
-                <p className="text-dominant-300">{obj.role}</p>
-              </div>
-            </div>
-          </article>
-        </div>
-        <BrowserMockup
-          title={obj.title}
-          siteLink={obj.siteLink}
-          img={obj.img as unknown as string}
-        />
-      </div>
-    </section>
-  ));
+            <BrowserMockup
+              title={obj.title}
+              siteLink={obj.siteLink}
+              img={obj.img as unknown as string}
+            />
+          </div>
+        </section>
+      ))}
+    </div>
+  );
 }
 
 interface TypingProps {
@@ -179,7 +184,7 @@ const TypingEffect: FC<TypingProps> = ({ text, typedText, setTypedText }) => {
               } else {
                 clearInterval(interval);
               }
-            }, 70);
+            }, 40);
 
             obs.unobserve(entry.target);
           }
@@ -199,7 +204,10 @@ const TypingEffect: FC<TypingProps> = ({ text, typedText, setTypedText }) => {
   }, [text]);
 
   return (
-    <span ref={typingRef} className="text-ellipses text-nowrap">
+    <span
+      ref={typingRef}
+      className="tracking-tighter text-ellipses text-nowrap"
+    >
       {typedText}
     </span>
   );
@@ -215,32 +223,32 @@ const BrowserMockup: FC<MockUpProps> = ({ title, siteLink, img }) => {
   const [typedText, setTypedText] = useState("");
   const image = siteLink.length === typedText.length ? img : googleScreenShot;
   return (
-    <div className="relative mx-auto w-full sm:max-w-xl rounded-lg">
-      <div className="py-3 space-x-4 flex flex-row bg-dominant-600 rounded-t-md">
-        <div className="flex flex-row space-x-2 ml-4 mt-0.5">
+    <div className="relative  mx-auto h-fit w-full sm:max-w-xl rounded-xl overflow-hidden ring-1 ring-white">
+      <div className="py-3 flex flex-row items-center bg-dominant pb-4 px-4">
+        <div className="flex flex-row space-x-2">
           <svg
-            className="size-2.5 fill-red-400"
+            className="size-2.5 stroke-white rounded-full"
             viewBox="0 0 6 6"
             aria-hidden="true"
           >
             <circle cx={3} cy={3} r={3} />
           </svg>
           <svg
-            className="size-2.5 fill-yellow-400"
+            className="size-2.5 stroke-white rounded-full"
             viewBox="0 0 6 6"
             aria-hidden="true"
           >
             <circle cx={3} cy={3} r={3} />
           </svg>
           <svg
-            className="size-2.5 fill-green-400"
+            className="size-2.5 stroke-white rounded-full"
             viewBox="0 0 6 6"
             aria-hidden="true"
           >
             <circle cx={3} cy={3} r={3} />
           </svg>
         </div>
-        <div className="text-sm text-white flex flex-row bg-dominant-500 px-2 rounded-t-xl pb-4 -mt-2 pt-1">
+        <div className="text-sm text-white flex flex-row bg-dominant px-2 pl-12">
           {siteLink.length === typedText.length ? (
             <EarthIcon className="size-3 mt-1 fill-white ml-0.5 mr-2" />
           ) : (
@@ -253,15 +261,15 @@ const BrowserMockup: FC<MockUpProps> = ({ title, siteLink, img }) => {
           />
         </div>
       </div>
-      <div className="bg-dominant-500 py-1.5 flex flex-row -mt-5">
-        <div className="hidden sm:flex flex-row space-x-2 sm:space-x-4 px-4 mt-2 text-dominant-200">
+      <div className="bg-dominant pb-3 flex flex-row px-4">
+        <div className="hidden sm:flex flex-row space-x-3 mt-2 mr-5 text-dominant-200">
           <ArrowLeftIcon className="size-4" strokeWidth={3} />
           <ArrowRightIcon className="size-4" strokeWidth={3} />
           <ArrowPathIcon className="size-4" strokeWidth={3} />
         </div>
-        <p className="flex flex-inline align-items text-nowrap w-full mr-2 sm:mr-0 ml-2 sm:ml-0 pr-2 sm:pr-12 pl-4 py-1 bg-dominant-400 text-white overflow-x-hidden rounded-full">
+        <p className="flex flex-inline align-items text-nowrap w-full pl-4 py-1 bg-dominant ring-1 ring-white text-white overflow-x-hidden rounded-full">
           <span className="mt-0.5 -ml-3 mr-2">
-            <InformationCircleIcon className="size-6 -mt-0.5 p-0.5 stroke-white bg-dominant-500 rounded-full" />
+            <InformationCircleIcon className="size-6 -mt-0.5  stroke-white bg-dominant rounded-full" />
           </span>
           <TypingEffect
             text={siteLink}
@@ -276,9 +284,9 @@ const BrowserMockup: FC<MockUpProps> = ({ title, siteLink, img }) => {
           />
         </div>
       </div>
-      <div className="flex justify-center border-t border-dominant-500">
+      <div className="flex justify-center ">
         <NextImage
-          className="object-fit rounded-b-lg h-3/4"
+          className="object-fit opacity-80 rounded-b-lg h-3/4"
           alt="image of a website"
           src={image}
           priority

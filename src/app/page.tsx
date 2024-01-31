@@ -1,10 +1,83 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { classNames } from "../../utils/funcs";
 import Image from "./assets/mypic.png";
 import NextImage from "next/image";
 import Link from "next/link";
-import meImage from "./assets/meImage.png";
+
+const animations = [
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-1",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-4",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-4",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-4",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-4",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-1",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-1",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-1",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll-4",
+  "animate-infinite-scroll",
+  "animate-infinite-scroll-3",
+  "animate-infinite-scroll-5",
+  "animate-infinite-scroll-2",
+  "animate-infinite-scroll-1",
+];
+
+const BinaryMarquee = () => {
+  return useMemo(
+    () => (
+      <div className="absolute w-full flex flex-col top-0">
+        {animations.map((animation, i) => (
+          <div
+            key={i + "outer-loop"}
+            className={classNames(
+              "flex items-center justify-center whitespace-nowrap",
+              animation
+            )}
+          >
+            {Array(300)
+              .fill(null)
+              .map((_, j) => (
+                <div
+                  key={j + "inner-loop"}
+                  className={classNames(
+                    "text-dominant-900/30 text-2xl tracking-widest",
+                    j % 2 === 0 ? " text-primary-950/20" : ""
+                  )}
+                >
+                  {Math.round(Math.random())}
+                </div>
+              ))}
+          </div>
+        ))}
+      </div>
+    ),
+    []
+  );
+};
 
 export default function Home() {
   const [randomNum, setRandomNum] = useState(0);
@@ -19,46 +92,26 @@ export default function Home() {
   }, [letterArray.length]);
 
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden h-screen">
+      <div className="fixed w-full top-16 flex flex-col">
+        <BinaryMarquee />
+      </div>
+
       <div className="mx-auto max-w-7xl">
-        <div className="relative z-10 lg:w-full lg:max-w-2xl">
-          <svg
-            className="absolute inset-y-0 overflow-y-hidden right-8 hidden h-full w-80 translate-x-1/2 transform fill-zinc-950 lg:block"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <polygon points="0,0 90,0 50,100 0,100" />
-          </svg>
-
-          <div className="relative px-6 py-32 lg:px-8 lg:py-56 lg:pr-0">
+        <div className="relative z-20 lg:w-full lg:max-w-2xl">
+          <div className="relative px-8 h-screen sm:px-16 flex flex-col justify-center items-center">
             <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-xl">
-              {/* <div className="hidden sm:mb-16 sm:flex">
-                <div className="bg-gradient-to-r from-primary-300 via-zinc-100 to-secondary-200 opacity-80 p-[1px] w-fit rounded-full absolute z-20 hover:opacity-100">
-                  <div className="bg-dominant-950 rounded-full px-3 py-1 text-sm leading-6 text-gray-300">
-                    Get to know me more checkout my about me section.{" "}
-                    <a
-                      href="#"
-                      className=" whitespace-nowrap font-semibold text-secondary-200"
-                    >
-                      <span className="absolute inset-0" aria-hidden="true" />
-                      About me <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </div>
-                </div>
-              </div> */}
-
-              <h1 className="text-4xl font-bold tracking-tight  text-primary-300/60 sm:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight  text-primary-400/60 sm:text-6xl">
                 {letterArray.map((char, i) => (
                   <span
                     key={char + i}
                     className={classNames(
-                      `neon-flicker hover:text-primary-300 text-shadow-lg ${
+                      `neon-flicker hover:text-primary-400 text-shadow-lg ${
                         randomNum % 2 === 0
                           ? i <= randomNum &&
-                            "text-primary-300 neon-flicker-rand"
+                            "text-primary-400 neon-flicker-rand"
                           : i >= randomNum &&
-                            "text-primary-300 neon-flicker-rand"
+                            "text-primary-400 neon-flicker-rand"
                       }`
                     )}
                   >
@@ -67,16 +120,15 @@ export default function Home() {
                 ))}
               </h1>
 
-              <p className="text-lg mt-6 leading-8 text-gray-300">
+              <p className="text-lg mt-6 font-semibold leading-8 text-white">
                 Software Developer @ SoundSculpt | Fullstack: TypeScript, React,
                 NodeJS, ExpressJS, NextJS, RemixJS | API Integrations | UI/UX
                 Enthusiast | Python | Flask
               </p>
-
               <div className="mt-10 flex items-center gap-x-6 hover-orb">
                 <Link
                   href="/portfolio"
-                  className="rounded-md bg-secondary-200 px-3.5 py-2.5 text-sm font-semibold text-dominant-950 shadow-sm hover:bg-secondary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-primary-400 px-3.5 py-2.5 text-sm font-semibold text-dominant-950 shadow-sm hover:bg-primary-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   Portfolio
                 </Link>
@@ -88,11 +140,14 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+
+      <div className="hidden lg:block lg:absolute h-full left-0 w-1/2 z-10 inset-0 bg-gradient-to-l from-dominant-950 to-transparent" />
+      <div className="hidden lg:block lg:absolute -bottom-10 h-full lg:right-0 lg:w-1/2">
+        <div className="absolute h-full z-10 inset-0 bg-gradient-to-r from-dominant-950 to-transparent" />
         <NextImage
           src={Image}
-          className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full"
-          alt="Person coding on a macbook"
+          className="aspect-[3/2] object-cover lg:aspect-auto lg:h-full lg:w-full grayscale"
+          alt="Person coding on a MacBook"
           priority
         />
       </div>
