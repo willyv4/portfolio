@@ -52,10 +52,11 @@ export const pieces = [
   {
     role: "Springboard Capstone Project",
     title: "CrimeScope",
-    shortDescription: "AI safety tips according to location & crime data.",
+    shortDescription:
+      "AI safety tips according to location & crime data. Note Deleted Live Site.",
     type: "web",
     img: crimeScoperScreenShot,
-    siteLink: "https://crime-scope.herokuapp.com/signup",
+    siteLink: "",
     codeLink: "https://github.com/willyv4/CrimeScope",
     content:
       "- Clear Crime Data Presentation: Simplified US crime trends representation with percentages and tables.\n" +
